@@ -16,7 +16,7 @@ public class PdfReqDto {
 	private String eventLocation;
 	private String eventImgUrl;
 	private List<TicketSubclassDto> ticketSubclasses;
-	
+	private List<AmountDto> amountList;
 	
 
 	public PdfReqDto() {
@@ -115,21 +115,48 @@ public class PdfReqDto {
 	}
 
 
+	public List<TicketSubclassDto> getTicketSubclasses() {
+		return ticketSubclasses;
+	}
+
+
+	public void setTicketSubclasses(List<TicketSubclassDto> ticketSubclasses) {
+		this.ticketSubclasses = ticketSubclasses;
+	}
+
+
+	public List<AmountDto> getAmountList() {
+		return amountList;
+	}
+
+
+	public void setAmountList(List<AmountDto> amountList) {
+		this.amountList = amountList;
+	}
+
+
 	@Override
 	public String toString() {
 		return "PdfReqDto [bookingDate=" + bookingDate + ", orderId=" + orderId + ", ticketId=" + ticketId
 				+ ", ticketClass=" + ticketClass + ", eventName=" + eventName + ", eventDate=" + eventDate
 				+ ", eventTime=" + eventTime + ", eventLocation=" + eventLocation + ", eventImgUrl=" + eventImgUrl
-				+ "]";
+				+ ", ticketSubclasses=" + ticketSubclasses + ", amountList=" + amountList + "]";
+	}
+
+
+	
 	}
 
 
 	
 
+
+	
+
 	
 
 	
 	
 	
 
-}
+

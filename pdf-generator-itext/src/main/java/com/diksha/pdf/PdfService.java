@@ -164,18 +164,22 @@ public class PdfService {
 			
 			Table table9 = new Table(new float[] {400f,400f});
 			Table table10 = new Table(new float[] {500f});
-		
-			
-			table10.addCell(new Cell().add(" Afl 110.00").setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
-			
-			table10.addCell(new Cell().add(" Afl 100.00").setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
+			Double TotalAmount=000.00;
+			for(AmountDto Amount:req.getAmountList()) {
+			table10.addCell(new Cell().add(Amount.getAmount()).setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
+			Double amount  =Double.parseDouble(Amount.getAmount().substring(4, Amount.getAmount().length()));
+			TotalAmount += amount;
+			}
+			//table10.addCell(new Cell().add(" Afl 100.00").setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
 			
 			
 			Table table11 = new Table(new float[] {5f,5f});
+			for(TicketSubclassDto ticketSubclass:req.getTicketSubclasses()) {
 			table11.addCell(new Cell().add(ticketimg).setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE).setHorizontalAlignment(HorizontalAlignment.LEFT));
-			table11.addCell(new Cell().add("2Seh-ultra early bird").setTextAlignment(TextAlignment.LEFT).setFontSize(10).setBorder(Border.NO_BORDER));
-			table11.addCell(new Cell().add(ticketimg).setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE).setHorizontalAlignment(HorizontalAlignment.LEFT));
-			table11.addCell(new Cell().add("Vip single").setTextAlignment(TextAlignment.LEFT).setFontSize(10).setBorder(Border.NO_BORDER));
+			table11.addCell(new Cell().add((ticketSubclass.getTicketSubClass())).setTextAlignment(TextAlignment.LEFT).setFontSize(10).setBorder(Border.NO_BORDER));
+			}
+			//table11.addCell(new Cell().add(ticketimg).setBorder(Border.NO_BORDER).setVerticalAlignment(VerticalAlignment.MIDDLE).setHorizontalAlignment(HorizontalAlignment.LEFT));
+			//table11.addCell(new Cell().add("Vip single").setTextAlignment(TextAlignment.LEFT).setFontSize(10).setBorder(Border.NO_BORDER));
 			
 			table9.addCell(new Cell().add(table11).setBorder(Border.NO_BORDER));
 			table9.addCell(new Cell().add(table10).setBorder(Border.NO_BORDER));
@@ -187,8 +191,10 @@ public class PdfService {
 			
 			Table table12 = new Table(new float[] {250f,265f});
 			
+			
 			table12.addCell(new Cell().add(" Total Amount ").setHeight(30f).setVerticalAlignment(VerticalAlignment.MIDDLE).setTextAlignment(TextAlignment.LEFT).setFontSize(10).setBorder(Border.NO_BORDER));
-			table12.addCell(new Cell().add(" Afl 210.00 ").setHeight(30f).setVerticalAlignment(VerticalAlignment.MIDDLE).setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
+			
+			table12.addCell(new Cell().add(" Afl "+String.valueOf(TotalAmount)).setHeight(30f).setVerticalAlignment(VerticalAlignment.MIDDLE).setTextAlignment(TextAlignment.RIGHT).setFontSize(10).setBorder(Border.NO_BORDER));
 			
 			//graybox
 			
